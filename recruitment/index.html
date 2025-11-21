@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub - Find Your Dream Job</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">CareerHub</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="login.html">Candidate Login</a></li>
+                <li><a href="admin-login.html">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Job</h1>
+            <p>Discover thousands of job opportunities from top companies</p>
+            <div class="hero-buttons">
+                <a href="jobs.html" class="btn btn-primary">Browse Jobs</a>
+                <a href="login.html" class="btn btn-secondary">Post Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose CareerHub?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Advanced Search</h3>
+                <p>Filter jobs by location, experience, salary, and more</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Easy Application</h3>
+                <p>Apply in one click with your saved resume</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Track Applications</h3>
+                <p>Monitor your job applications in real-time</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Perfect Match</h3>
+                <p>Get matched with jobs that suit your skills</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-box">
+            <h3>5000+</h3>
+            <p>Active Jobs</p>
+        </div>
+        <div class="stat-box">
+            <h3>2000+</h3>
+            <p>Companies</p>
+        </div>
+        <div class="stat-box">
+            <h3>50000+</h3>
+            <p>Job Seekers</p>
+        </div>
+        <div class="stat-box">
+            <h3>10000+</h3>
+            <p>Successful Hires</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Start Your Career Journey?</h2>
+        <p>Join thousands of professionals finding their dream jobs</p>
+        <a href="jobs.html" class="btn btn-primary btn-large">Explore Opportunities</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CareerHub. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Make feature cards clickable
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.addEventListener('click', function() {
+                if (index === 0) {
+                    // Advanced Search card
+                    window.location.href = 'jobs.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

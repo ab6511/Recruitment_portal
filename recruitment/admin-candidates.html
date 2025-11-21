@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Candidates - CareerHub Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="admin-dashboard.html" class="logo">CareerHub Admin</a>
+            <ul class="nav-links">
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+                <li><a href="admin-jobs.html">Manage Jobs</a></li>
+                <li><a href="admin-candidates.html" class="active">View Candidates</a></li>
+                <li><a href="admin-analytics.html">Analytics</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-nav-item">📊 Dashboard</a>
+                <a href="admin-jobs.html" class="admin-nav-item">💼 Manage Jobs</a>
+                <a href="admin-candidates.html" class="admin-nav-item active">👥 View Candidates</a>
+                <a href="admin-analytics.html" class="admin-nav-item">📈 Analytics</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="dashboard-header">
+                <h1>All Candidates</h1>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="searchBox" placeholder="Search by name or email..." style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 250px;">
+                    <select id="statusFilter" style="padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        <option value="">All Status</option>
+                        <option value="new">New</option>
+                        <option value="viewed">Viewed</option>
+                        <option value="interview">Interview</option>
+                        <option value="hired">Hired</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Candidates Table -->
+            <section class="dashboard-section">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Candidate Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Applied For</th>
+                            <th>Experience</th>
+                            <th>Date Applied</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="candidatesTable">
+                        <tr>
+                            <td>Priya Singh</td>
+                            <td>priya.singh@email.com</td>
+                            <td>+91 9876543210</td>
+                            <td>Senior Developer</td>
+                            <td>5 years</td>
+                            <td>Nov 20, 2025</td>
+                            <td><span class="status-new">New</span></td>
+                            <td><button class="btn btn-sm btn-primary" onclick="viewCandidate('Priya Singh')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Rajesh Patel</td>
+                            <td>rajesh.patel@email.com</td>
+                            <td>+91 9876543211</td>
+                            <td>UI/UX Designer</td>
+                            <td>3 years</td>
+                            <td>Nov 19, 2025</td>
+                            <td><span class="status-viewed">Viewed</span></td>
+                            <td><button class="btn btn-sm btn-primary" onclick="viewCandidate('Rajesh Patel')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Ananya Sharma</td>
+                            <td>ananya.sharma@email.com</td>
+                            <td>+91 9876543212</td>
+                            <td>Data Analyst</td>
+                            <td>2 years</td>
+                            <td>Nov 18, 2025</td>
+                            <td><span class="status-interview">Interview</span></td>
+                            <td><button class="btn btn-sm btn-primary" onclick="viewCandidate('Ananya Sharma')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Vikram Kumar</td>
+                            <td>vikram.kumar@email.com</td>
+                            <td>+91 9876543213</td>
+                            <td>Senior Developer</td>
+                            <td>6 years</td>
+                            <td>Nov 17, 2025</td>
+                            <td><span class="status-hired">Hired</span></td>
+                            <td><button class="btn btn-sm btn-primary" onclick="viewCandidate('Vikram Kumar')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Deepika Verma</td>
+                            <td>deepika.verma@email.com</td>
+                            <td>+91 9876543214</td>
+                            <td>Product Manager</td>
+                            <td>4 years</td>
+                            <td>Nov 16, 2025</td>
+                            <td><span class="status-new">New</span></td>
+                            <td><button class="btn btn-sm btn-primary" onclick="viewCandidate('Deepika Verma')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Amit Joshi</td>
+                            <td>amit.joshi@email.com</td>
+                            <td>+91 9876543215</td>
+                            <td>Backend Developer</td>
+                            <td>4 years</td>
+                            <td>Nov 15, 2025</td>
+                            <td><span class="status-rejected">Rejected</span></td>
+                            <td><button class="btn btn-sm btn-primary" onclick="viewCandidate('Amit Joshi')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Neha Gupta</td>
+                            <td>neha.gupta@email.com</td>
+                            <td>+91 9876543216</td>
+                            <td>Frontend Developer</td>
+                            <td>2 years</td>
+                            <td>Nov 14, 2025</td>
+                            <td><span class="status-interview">Interview</span></td>
+                            <td><button class="btn btn-sm btn-primary" onclick="viewCandidate('Neha Gupta')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sanjay Desai</td>
+                            <td>sanjay.desai@email.com</td>
+                            <td>+91 9876543217</td>
+                            <td>DevOps Engineer</td>
+                            <td>5 years</td>
+                            <td>Nov 13, 2025</td>
+                            <td><span class="status-viewed">Viewed</span></td>
+                            <td><button class="btn btn-sm btn-primary" onclick="viewCandidate('Sanjay Desai')">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CareerHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function viewCandidate(name) {
+            alert('Viewing profile for: ' + name);
+        }
+
+        function logout() {
+            alert('Logged out successfully');
+            window.location.href = 'admin-login.html';
+        }
+
+        // Search and filter functionality
+        document.getElementById('searchBox').addEventListener('keyup', filterCandidates);
+        document.getElementById('statusFilter').addEventListener('change', filterCandidates);
+
+        function filterCandidates() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+            const rows = document.querySelectorAll('#candidatesTable tr');
+
+            rows.forEach(row => {
+                const name = row.cells[0].textContent.toLowerCase();
+                const email = row.cells[1].textContent.toLowerCase();
+                const status = row.cells[6].textContent.trim();
+
+                let show = true;
+                
+                // Search filter
+                if (searchTerm && !name.includes(searchTerm) && !email.includes(searchTerm)) {
+                    show = false;
+                }
+
+                // Status filter
+                if (statusFilter) {
+                    const statusClass = row.cells[6].querySelector('span').className;
+                    if (!statusClass.includes(statusFilter)) {
+                        show = false;
+                    }
+                }
+
+                row.style.display = show ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

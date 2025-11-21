@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - CareerHub Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="admin-dashboard.html" class="logo">CareerHub Admin</a>
+            <ul class="nav-links">
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+                <li><a href="admin-jobs.html">Manage Jobs</a></li>
+                <li><a href="admin-candidates.html">View Candidates</a></li>
+                <li><a href="admin-analytics.html">Analytics</a></li>
+                <li><a href="admin-settings.html" class="active">Settings</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-nav-item">📊 Dashboard</a>
+                <a href="admin-jobs.html" class="admin-nav-item">💼 Manage Jobs</a>
+                <a href="admin-candidates.html" class="admin-nav-item">👥 View Candidates</a>
+                <a href="admin-analytics.html" class="admin-nav-item">📈 Analytics</a>
+                <a href="admin-settings.html" class="admin-nav-item active">⚙️ Settings</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="dashboard-header">
+                <h1>Settings</h1>
+                <p>Manage your company profile and preferences</p>
+            </div>
+
+            <div class="settings-container">
+                <!-- Settings Navigation Tabs -->
+                <div class="settings-tabs">
+                    <button class="settings-tab active" onclick="switchTab('profile')">Company Profile</button>
+                    <button class="settings-tab" onclick="switchTab('preferences')">Preferences</button>
+                    <button class="settings-tab" onclick="switchTab('billing')">Billing & Subscription</button>
+                    <button class="settings-tab" onclick="switchTab('notifications')">Notifications</button>
+                    <button class="settings-tab" onclick="switchTab('security')">Security</button>
+                </div>
+
+                <!-- Company Profile Tab -->
+                <div id="profile" class="settings-tab-content active">
+                    <div class="settings-section">
+                        <h2>Company Profile</h2>
+                        <form class="settings-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <input type="text" value="TechCorp India" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company Email</label>
+                                    <input type="email" value="hr@techcorp.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Contact Person</label>
+                                    <input type="text" value="Rajesh Kumar" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" value="+91 9876543210" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Company Size</label>
+                                    <select required>
+                                        <option selected>Large (1000+)</option>
+                                        <option>Medium (201-1000)</option>
+                                        <option>Small (51-200)</option>
+                                        <option>Startup (1-50)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Industry</label>
+                                    <select required>
+                                        <option selected>Technology</option>
+                                        <option>Finance</option>
+                                        <option>Healthcare</option>
+                                        <option>Retail</option>
+                                        <option>Manufacturing</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Company Website</label>
+                                <input type="url" value="https://techcorp.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>About Company</label>
+                                <textarea rows="4" placeholder="Tell us about your company...">Leading technology solutions provider in India specializing in software development and IT consulting.</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Company Logo</label>
+                                <div class="file-upload">
+                                    <input type="file" accept="image/*">
+                                    <button type="button" class="btn btn-secondary">Choose File</button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Preferences Tab -->
+                <div id="preferences" class="settings-tab-content">
+                    <div class="settings-section">
+                        <h2>Recruitment Preferences</h2>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Show company profile on job listings
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Auto-archive inactive jobs after 60 days
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox"> Hide candidate contact info until interview stage
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Allow candidates to apply via LinkedIn
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Default Job Posting Duration (days)</label>
+                                <select required>
+                                    <option>7 days</option>
+                                    <option selected>30 days</option>
+                                    <option>60 days</option>
+                                    <option>90 days</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Screening Questions</label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Ask about notice period
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Ask about current salary
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox"> Ask about availability
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Billing Tab -->
+                <div id="billing" class="settings-tab-content">
+                    <div class="settings-section">
+                        <h2>Billing & Subscription</h2>
+                        
+                        <div class="subscription-info">
+                            <h3>Current Plan</h3>
+                            <div class="plan-card">
+                                <h4>Professional Plan</h4>
+                                <p class="plan-price">₹5,000 <span>/month</span></p>
+                                <ul class="plan-features">
+                                    <li>✓ Up to 10 active job postings</li>
+                                    <li>✓ Unlimited applications</li>
+                                    <li>✓ Advanced analytics</li>
+                                    <li>✓ Email support</li>
+                                </ul>
+                                <button class="btn btn-secondary">Current Plan</button>
+                            </div>
+                        </div>
+
+                        <div class="subscription-info">
+                            <h3>Upgrade Plans</h3>
+                            <div class="plans-grid">
+                                <div class="plan-card">
+                                    <h4>Standard Plan</h4>
+                                    <p class="plan-price">₹3,000 <span>/month</span></p>
+                                    <ul class="plan-features">
+                                        <li>✓ Up to 5 active jobs</li>
+                                        <li>✓ Unlimited applications</li>
+                                        <li>✓ Basic analytics</li>
+                                    </ul>
+                                    <button class="btn btn-secondary">Downgrade</button>
+                                </div>
+
+                                <div class="plan-card">
+                                    <h4>Premium Plan</h4>
+                                    <p class="plan-price">₹9,999 <span>/month</span></p>
+                                    <ul class="plan-features">
+                                        <li>✓ Unlimited job postings</li>
+                                        <li>✓ Priority support</li>
+                                        <li>✓ Advanced analytics</li>
+                                        <li>✓ API access</li>
+                                    </ul>
+                                    <button class="btn btn-primary">Upgrade Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="billing-history">
+                            <h3>Billing History</h3>
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Plan</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Invoice</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Nov 21, 2025</td>
+                                        <td>Professional Plan</td>
+                                        <td>₹5,000</td>
+                                        <td><span class="status-new">Paid</span></td>
+                                        <td><a href="#">Download</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oct 21, 2025</td>
+                                        <td>Professional Plan</td>
+                                        <td>₹5,000</td>
+                                        <td><span class="status-new">Paid</span></td>
+                                        <td><a href="#">Download</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Tab -->
+                <div id="notifications" class="settings-tab-content">
+                    <div class="settings-section">
+                        <h2>Notification Settings</h2>
+                        <form class="settings-form">
+                            <h3>Email Notifications</h3>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> New applications received
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Candidate withdrawal
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Interview reminders
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox"> Weekly digest
+                                </label>
+                            </div>
+
+                            <h3 style="margin-top: 30px;">In-App Notifications</h3>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Application updates
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Interview scheduling
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> System updates
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save Notification Settings</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Security Tab -->
+                <div id="security" class="settings-tab-content">
+                    <div class="settings-section">
+                        <h2>Security Settings</h2>
+                        <form class="settings-form">
+                            <h3>Change Password</h3>
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <input type="password" placeholder="Enter current password" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" placeholder="Enter new password" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" placeholder="Confirm new password" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+
+                            <h3 style="margin-top: 40px;">Two-Factor Authentication</h3>
+                            <p>Add an extra layer of security to your account</p>
+                            <button type="button" class="btn btn-secondary">Enable 2FA</button>
+
+                            <h3 style="margin-top: 40px;">Active Sessions</h3>
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Device</th>
+                                        <th>IP Address</th>
+                                        <th>Last Active</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Windows Desktop</td>
+                                        <td>192.168.1.100</td>
+                                        <td>Just now</td>
+                                        <td><button class="btn btn-sm btn-danger">Logout</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chrome Mobile</td>
+                                        <td>203.0.113.45</td>
+                                        <td>2 hours ago</td>
+                                        <td><button class="btn btn-sm btn-danger">Logout</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CareerHub. All rights reserved.</p>
+    </footer>
+
+    <style>
+        .settings-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .settings-tabs {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .settings-tab {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .settings-tab:hover {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .settings-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: #f9f7ff;
+        }
+
+        .settings-tab-content {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .settings-tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .settings-section h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .settings-section h3 {
+            font-size: 18px;
+            margin: 20px 0 15px 0;
+            color: #333;
+        }
+
+        .settings-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .file-upload {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-upload input[type="file"] {
+            flex: 1;
+        }
+
+        .subscription-info {
+            margin: 30px 0;
+        }
+
+        .plan-card {
+            background: #f9f9f9;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .plan-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .plan-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .plan-price span {
+            font-size: 14px;
+            font-weight: normal;
+            color: #666;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .billing-history {
+            margin-top: 40px;
+        }
+
+        .billing-history h3 {
+            margin-bottom: 20px;
+        }
+
+        .billing-history a {
+            color: #667eea;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .billing-history a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .settings-tabs {
+                flex-wrap: wrap;
+            }
+
+            .settings-tab {
+                min-width: 100px;
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+
+            .settings-tab-content {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.settings-tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from buttons
+            const buttons = document.querySelectorAll('.settings-tab');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function logout() {
+            alert('Logged out successfully');
+            window.location.href = 'admin-login.html';
+        }
+
+        // Form submission handlers
+        document.querySelectorAll('.settings-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Settings saved successfully!');
+            });
+        });
+    </script>
+</body>
+</html>

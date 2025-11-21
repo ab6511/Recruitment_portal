@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CareerHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="admin-dashboard.html" class="logo">CareerHub Admin</a>
+            <ul class="nav-links">
+                <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="admin-jobs.html">Manage Jobs</a></li>
+                <li><a href="admin-candidates.html">View Candidates</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-nav-item active">📊 Dashboard</a>
+                <a href="admin-jobs.html" class="admin-nav-item">💼 Manage Jobs</a>
+                <a href="admin-candidates.html" class="admin-nav-item">👥 View Candidates</a>
+                <a href="admin-analytics.html" class="admin-nav-item">📈 Analytics</a>
+                <a href="admin-settings.html" class="admin-nav-item">⚙️ Settings</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="dashboard-header">
+                <h1>Dashboard</h1>
+                <p>Welcome back, TechCorp Inc.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Active Jobs</h3>
+                    <p class="stat-number">8</p>
+                    <small>Posted in last 30 days</small>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Applications</h3>
+                    <p class="stat-number">156</p>
+                    <small>Pending review: 24</small>
+                </div>
+                <div class="stat-card">
+                    <h3>Interviews Scheduled</h3>
+                    <p class="stat-number">12</p>
+                    <small>This month</small>
+                </div>
+                <div class="stat-card">
+                    <h3>Hired</h3>
+                    <p class="stat-number">3</p>
+                    <small>This year</small>
+                </div>
+            </div>
+
+            <!-- Recent Applications -->
+            <section class="dashboard-section">
+                <h2>Recent Applications</h2>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Candidate</th>
+                            <th>Position</th>
+                            <th>Applied Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>Senior Full Stack Developer</td>
+                            <td>Nov 18, 2025</td>
+                            <td><span class="status-new">New</span></td>
+                            <td><button class="btn btn-sm btn-secondary">Review</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>Product Manager</td>
+                            <td>Nov 17, 2025</td>
+                            <td><span class="status-reviewed">Reviewed</span></td>
+                            <td><button class="btn btn-sm btn-secondary">Schedule Interview</button></td>
+                        </tr>
+                        <tr>
+                            <td>Mike Johnson</td>
+                            <td>UX/UI Designer</td>
+                            <td>Nov 16, 2025</td>
+                            <td><span class="status-interview">Interview Scheduled</span></td>
+                            <td><button class="btn btn-sm btn-secondary">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="dashboard-section">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <a href="admin-jobs.html" class="action-card">
+                        <span class="action-icon">➕</span>
+                        <h3>Post New Job</h3>
+                    </a>
+                    <a href="admin-candidates.html" class="action-card">
+                        <span class="action-icon">👥</span>
+                        <h3>View All Candidates</h3>
+                    </a>
+                    <a href="admin-analytics.html" class="action-card">
+                        <span class="action-icon">📊</span>
+                        <h3>View Analytics</h3>
+                    </a>
+                    <a href="admin-settings.html" class="action-card">
+                        <span class="action-icon">⚙️</span>
+                        <h3>Settings</h3>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CareerHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function logout() {
+            alert('Logged out successfully');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

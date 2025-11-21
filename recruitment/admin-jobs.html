@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Jobs - CareerHub Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="admin-dashboard.html" class="logo">CareerHub Admin</a>
+            <ul class="nav-links">
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
+                <li><a href="admin-jobs.html" class="active">Manage Jobs</a></li>
+                <li><a href="admin-candidates.html">View Candidates</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-nav-item">📊 Dashboard</a>
+                <a href="admin-jobs.html" class="admin-nav-item active">💼 Manage Jobs</a>
+                <a href="admin-candidates.html" class="admin-nav-item">👥 View Candidates</a>
+                <a href="admin-analytics.html" class="admin-nav-item">📈 Analytics</a>
+                <a href="admin-settings.html" class="admin-nav-item">⚙️ Settings</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="dashboard-header">
+                <h1>Manage Job Postings</h1>
+                <button class="btn btn-primary" onclick="openJobForm()">+ Post New Job</button>
+            </div>
+
+            <!-- Job Form Modal -->
+            <div id="job-form-modal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close" onclick="closeJobForm()">&times;</span>
+                    <h2>Post a New Job</h2>
+                    <form class="job-form">
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" placeholder="e.g. Senior Developer" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" placeholder="City, State" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Job Type</label>
+                                <select required>
+                                    <option>Full-time</option>
+                                    <option>Part-time</option>
+                                    <option>Contract</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Experience Level</label>
+                                <select required>
+                                    <option>Entry Level</option>
+                                    <option>Mid Level</option>
+                                    <option>Senior</option>
+                                    <option>Executive</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Salary Range</label>
+                                <input type="text" placeholder="e.g. $80k - $120k" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea rows="6" placeholder="Job description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Required Skills (comma separated)</label>
+                            <input type="text" placeholder="React, Node.js, MongoDB" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Publish Job</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Jobs List -->
+            <section class="dashboard-section">
+                <h2>Active Job Postings</h2>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Location</th>
+                            <th>Applications</th>
+                            <th>Posted Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="job-1">
+                            <td>Senior Full Stack Developer</td>
+                            <td>San Francisco, CA</td>
+                            <td>28</td>
+                            <td>Nov 5, 2025</td>
+                            <td><span class="status-active">Active</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-secondary" onclick="editJob(1)">Edit</button>
+                                <button class="btn btn-sm btn-danger" onclick="closeJob(1)">Close</button>
+                            </td>
+                        </tr>
+                        <tr id="job-2">
+                            <td>Product Manager</td>
+                            <td>New York, NY</td>
+                            <td>15</td>
+                            <td>Nov 10, 2025</td>
+                            <td><span class="status-active">Active</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-secondary" onclick="editJob(2)">Edit</button>
+                                <button class="btn btn-sm btn-danger" onclick="closeJob(2)">Close</button>
+                            </td>
+                        </tr>
+                        <tr id="job-3">
+                            <td>UX/UI Designer</td>
+                            <td>Remote</td>
+                            <td>32</td>
+                            <td>Nov 8, 2025</td>
+                            <td><span class="status-active">Active</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-secondary" onclick="editJob(3)">Edit</button>
+                                <button class="btn btn-sm btn-danger" onclick="closeJob(3)">Close</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CareerHub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openJobForm() {
+            document.getElementById('job-form-modal').classList.remove('hidden');
+        }
+
+        function closeJobForm() {
+            document.getElementById('job-form-modal').classList.add('hidden');
+        }
+
+        function closeJob(jobId) {
+            const jobRow = document.getElementById('job-' + jobId);
+            if (confirm('Are you sure you want to close this job posting?')) {
+                jobRow.style.opacity = '0.5';
+                const statusCell = jobRow.querySelector('td:nth-child(5) span');
+                statusCell.textContent = 'Closed';
+                statusCell.classList.remove('status-active');
+                statusCell.classList.add('status-closed');
+                
+                // Get the action cell
+                const actionCell = jobRow.querySelector('td:nth-child(6)');
+                
+                // Replace buttons with Reopen button
+                actionCell.innerHTML = '<button class="btn btn-sm btn-primary" onclick="reopenJob(' + jobId + ')">Reopen</button>';
+                
+                alert('Job posting closed successfully!');
+            }
+        }
+
+        function reopenJob(jobId) {
+            const jobRow = document.getElementById('job-' + jobId);
+            if (confirm('Are you sure you want to reopen this job posting?')) {
+                jobRow.style.opacity = '1';
+                const statusCell = jobRow.querySelector('td:nth-child(5) span');
+                statusCell.textContent = 'Active';
+                statusCell.classList.remove('status-closed');
+                statusCell.classList.add('status-active');
+                
+                // Get the action cell
+                const actionCell = jobRow.querySelector('td:nth-child(6)');
+                
+                // Replace button with Edit and Close buttons
+                actionCell.innerHTML = '<button class="btn btn-sm btn-secondary" onclick="editJob(' + jobId + ')">Edit</button> <button class="btn btn-sm btn-danger" onclick="closeJob(' + jobId + ')">Close</button>';
+                
+                alert('Job posting reopened successfully!');
+            }
+        }
+
+        function editJob(jobId) {
+            alert('Edit functionality for job ' + jobId);
+            openJobForm();
+        }
+
+        function logout() {
+            alert('Logged out successfully');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

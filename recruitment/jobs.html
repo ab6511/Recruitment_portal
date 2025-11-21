@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Jobs - CareerHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">CareerHub</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="login.html">Candidate Login</a></li>
+                <li><a href="admin-login.html">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jobs-container">
+        <!-- Filter Sidebar -->
+        <aside class="filter-sidebar">
+            <h3>Filters</h3>
+            
+            <div class="filter-group">
+                <label><strong>Location</strong></label>
+                <label><input type="checkbox" value="bangalore"> Bangalore</label>
+                <label><input type="checkbox" value="delhi"> Delhi</label>
+                <label><input type="checkbox" value="mumbai"> Mumbai</label>
+                <label><input type="checkbox" value="pune"> Pune</label>
+                <label><input type="checkbox" value="hyderabad"> Hyderabad</label>
+                <label><input type="checkbox" value="remote"> Remote</label>
+            </div>
+
+            <div class="filter-group">
+                <label><strong>Job Type</strong></label>
+                <label><input type="checkbox" value="full-time"> Full-time</label>
+                <label><input type="checkbox" value="part-time"> Part-time</label>
+                <label><input type="checkbox" value="contract"> Contract</label>
+                <label><input type="checkbox" value="freelance"> Freelance</label>
+            </div>
+
+            <div class="filter-group">
+                <label><strong>Experience Level</strong></label>
+                <label><input type="checkbox" value="entry"> Entry Level</label>
+                <label><input type="checkbox" value="mid"> Mid Level</label>
+                <label><input type="checkbox" value="senior"> Senior</label>
+                <label><input type="checkbox" value="executive"> Executive</label>
+            </div>
+
+            <div class="filter-group">
+                <label><strong>Salary Range</strong></label>
+                <input type="range" min="0" max="2000000" value="1000000" id="salary-slider">
+                <p>Up to ₹<span id="salary-value">1000000</span>/year</p>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="apply-filter-btn">Apply Filters</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="jobs-main">
+            <div class="jobs-header">
+                <h2>Available Positions</h2>
+                <p>Showing 12 results</p>
+            </div>
+
+            <div class="jobs-list">
+                <!-- Job Card 1 -->
+                <div class="job-card" data-location="bangalore" data-type="full-time" data-experience="senior">
+                    <div class="job-header">
+                        <h3>Senior Full Stack Developer</h3>
+                        <span class="badge badge-featured">Featured</span>
+                    </div>
+                    <p class="company">TechCorp India</p>
+                    <p class="job-description">We're looking for an experienced Full Stack Developer to join our team and build scalable web applications.</p>
+                    <div class="job-meta">
+                        <span class="meta-item">📍 Bangalore, Karnataka</span>
+                        <span class="meta-item">💼 Full-time</span>
+                        <span class="meta-item">⭐ Senior</span>
+                        <span class="meta-item">💰 ₹16-20 LPA</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary btn-sm">Apply Now</a>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card" data-location="mumbai" data-type="full-time" data-experience="mid">
+                    <div class="job-header">
+                        <h3>Product Manager</h3>
+                    </div>
+                    <p class="company">InnovateLabs India</p>
+                    <p class="job-description">Lead product strategy and development for our flagship SaaS platform serving millions of users.</p>
+                    <div class="job-meta">
+                        <span class="meta-item">📍 Mumbai, Maharashtra</span>
+                        <span class="meta-item">💼 Full-time</span>
+                        <span class="meta-item">⭐ Mid Level</span>
+                        <span class="meta-item">💰 ₹12-18 LPA</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">Product Strategy</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary btn-sm">Apply Now</a>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card" data-location="remote" data-type="full-time" data-experience="mid">
+                    <div class="job-header">
+                        <h3>UX/UI Designer</h3>
+                    </div>
+                    <p class="company">DesignStudio Co.</p>
+                    <p class="job-description">Join our creative team to design beautiful and intuitive user interfaces for mobile and web applications.</p>
+                    <div class="job-meta">
+                        <span class="meta-item">📍 Remote</span>
+                        <span class="meta-item">💼 Full-time</span>
+                        <span class="meta-item">⭐ Mid Level</span>
+                        <span class="meta-item">💰 ₹9-14 LPA</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">UI Design</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary btn-sm">Apply Now</a>
+                </div>
+
+                <!-- No Jobs Message -->
+                <div class="no-jobs-message" id="no-jobs-message">
+                    <p>❌ No jobs available matching your filters</p>
+                    <p style="font-size: 14px; margin-top: 8px; color: #999;">Try adjusting your filters</p>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card" data-location="hyderabad" data-type="full-time" data-experience="senior">
+                    <div class="job-header">
+                        <h3>Data Scientist</h3>
+                        <span class="badge badge-featured">Featured</span>
+                    </div>
+                    <p class="company">DataViz Systems</p>
+                    <p class="job-description">Build machine learning models and data pipelines to drive business insights and decision making.</p>
+                    <div class="job-meta">
+                        <span class="meta-item">📍 Hyderabad, Telangana</span>
+                        <span class="meta-item">💼 Full-time</span>
+                        <span class="meta-item">⭐ Senior</span>
+                        <span class="meta-item">💰 ₹18-22 LPA</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary btn-sm">Apply Now</a>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card" data-location="pune" data-type="full-time" data-experience="entry">
+                    <div class="job-header">
+                        <h3>Frontend Developer</h3>
+                    </div>
+                    <p class="company">WebDynamics Ltd.</p>
+                    <p class="job-description">Create responsive and performant web applications using modern frontend technologies.</p>
+                    <div class="job-meta">
+                        <span class="meta-item">📍 Pune, Maharashtra</span>
+                        <span class="meta-item">💼 Full-time</span>
+                        <span class="meta-item">⭐ Entry Level</span>
+                        <span class="meta-item">💰 ₹6-10 LPA</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary btn-sm">Apply Now</a>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card" data-location="remote" data-type="full-time" data-experience="mid">
+                    <div class="job-header">
+                        <h3>DevOps Engineer</h3>
+                    </div>
+                    <p class="company">CloudScale Technologies</p>
+                    <p class="job-description">Manage cloud infrastructure and deployment pipelines for high-availability systems.</p>
+                    <div class="job-meta">
+                        <span class="meta-item">📍 Remote</span>
+                        <span class="meta-item">💼 Full-time</span>
+                        <span class="meta-item">⭐ Mid Level</span>
+                        <span class="meta-item">💰 ₹14-18 LPA</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary btn-sm">Apply Now</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CareerHub. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        const salarySlider = document.getElementById('salary-slider');
+        const salaryValue = document.getElementById('salary-value');
+        const applyFilterBtn = document.getElementById('apply-filter-btn');
+        
+        // Update salary display
+        salarySlider.addEventListener('input', function() {
+            salaryValue.textContent = parseInt(this.value).toLocaleString('en-IN');
+        });
+
+        // Filter functionality
+        applyFilterBtn.addEventListener('click', function() {
+            const selectedLocations = Array.from(document.querySelectorAll('input[value="bangalore"], input[value="delhi"], input[value="mumbai"], input[value="pune"], input[value="hyderabad"], input[value="remote"]'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+            
+            const selectedTypes = Array.from(document.querySelectorAll('input[value="full-time"], input[value="part-time"], input[value="contract"], input[value="freelance"]'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+            
+            const selectedExperience = Array.from(document.querySelectorAll('input[value="entry"], input[value="mid"], input[value="senior"], input[value="executive"]'))
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+            
+            // Check if no filters are selected
+            if (selectedLocations.length === 0 && selectedTypes.length === 0 && selectedExperience.length === 0) {
+                alert('Please select at least one filter option');
+                return;
+            }
+            
+            const maxSalary = parseInt(salarySlider.value);
+
+            // Filter job cards
+            const jobCards = document.querySelectorAll('.job-card');
+            let visibleCount = 0;
+
+            jobCards.forEach(card => {
+                const cardLocation = card.getAttribute('data-location');
+                const cardType = card.getAttribute('data-type');
+                const cardExperience = card.getAttribute('data-experience');
+
+                let show = true;
+
+                if (selectedLocations.length > 0 && !selectedLocations.includes(cardLocation)) {
+                    show = false;
+                }
+                if (selectedTypes.length > 0 && !selectedTypes.includes(cardType)) {
+                    show = false;
+                }
+                if (selectedExperience.length > 0 && !selectedExperience.includes(cardExperience)) {
+                    show = false;
+                }
+
+                card.style.display = show ? 'block' : 'none';
+                if (show) visibleCount++;
+            });
+
+            // Update results count and show/hide no-jobs message
+            const resultsText = document.querySelector('.jobs-header p');
+            const noJobsMessage = document.getElementById('no-jobs-message');
+            if (resultsText) {
+                resultsText.textContent = `Showing ${visibleCount} results`;
+            }
+            if (noJobsMessage) {
+                if (visibleCount === 0) {
+                    noJobsMessage.classList.add('show');
+                } else {
+                    noJobsMessage.classList.remove('show');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
